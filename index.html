@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- <link rel="stylesheet" href="styling.css"> -->
+    <title>Search News easily</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <style>
+        .add-on .input-group-btn > .btn {
+            border-left-width:0;left:-2px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+
+        .add-on .form-control:focus {
+            box-shadow:none;
+            -webkit-box-shadow:none;
+            border-color:#cccccc;
+        }
+        .form-control{width:20%}
+
+    </style>
+
+</head>
+<body onload="getJSON('https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=top&apiKey=6f61ae9cfa1147a2b62610655e0b10bf')">
+<nav class="navbar navbar-custom navbar-fixed-top" style="background:#2b2929;">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand" style="font-size:30px" id="header-top"><i class="fa fa-cog fa-spin fa-fw"></i>
+                <span class="sr-only">Loading...</span>NewsFeed</a>
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right" >
+            <li><a  href="index.html" >Home</a></li>
+            <li><a  class="jumper" href="#aboutus" >About Us</a></li>
+            <li><a class="jumper" href="#contactus" >Contact Us</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+<br><br><br>
+
+
+<!--<div class="div1">
+<form id='fid' class="example" style="margin:auto;max-width:300px">
+    <input id="search_key" type="text" placeholder="Search.." name="search2">
+    <button  id="getJSON" type="submit"><i class="fa fa-search"></i></button>
+</form>
+</div> -->
+
+    <form>
+        <br><br>
+
+        <div style="text-align: center">
+           News:<br>
+           <input type="text" id="search_key" name="name" align="middle" placeholder="search"><br><br>
+
+
+            <input type="checkbox" name="news" value="cnn">CNN
+            <input type="checkbox" name="news" value="bbc-news">BBC News
+            <input type="checkbox" name="news" value="bbc-sport">BBC Sport
+            <input type="checkbox" name="news" value="abc-news">ABC News
+            <input type="checkbox" name="news" value="espn">ESPN
+            <input type="checkbox" name="news" value="business-insider-uk">Business Insider
+            <input type="checkbox" name="news" value="buzzfeed">Buzzfeed
+            <input type="checkbox" name="news" value="cnbc">CNBC<br><br><br>
+
+        </div>
+
+    </form>
+<!-- <form class="navbar-form" role="search">
+    <div id="searchdiv" class="input-group add-on">
+        <input class="form-control" placeholder="Search" name="srch-term" id="search_key" type="text">
+         <div id="divbutton" class="input-group-btn">
+            <button id="getJSON" class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" ></i></button>
+        </div>
+    </div>
+</form>  -->
+
+<br><br>
+
+
+
+   <input type="submit" value="Search" id="getJSON" class="w3-btn w3-blue">
+
+  <!--  <div class="row">
+        <div class="column">
+            <div class="column side">
+                <ul id="sources">
+                    <li><h2>CHANNELS</h2></li>
+                    <li><a style= "padding:20px;color:#2ea42a">ABC NEWS</a></li>
+                    <li><a style= "padding:20px;color:#2ea42a">BBC NEWS</a></li>
+                    <li><a style= "padding:20px;color:#2ea42a">BBC SPORTS</a></li>
+                    <li><a style= "padding:20px;color:#2ea42a">ESPN</a></li>
+                    <li><a style= "padding:20px;color:#2ea42a">BUSINESS INSIDER</a></li>
+                    <li><a style= "padding:20px;color:#2ea42a">BUZZFEED</a></li>
+                    <li><a style= "padding:20px;color:#2ea42a">CNBC</a></li>
+                    <li><a style= "padding:20px;color:#2ea42a">CNN</a></li>
+                </ul>
+            </div>
+            <div id="result" class="column middle">
+
+            </div>
+        </div>
+    </div>   -->
+<div id="result2" style="text-align: center"></div>
+<div id="result" class="column middle">
+
+</div>
+   <!-- <div id="result" class="w3-container"></div> -->
+
+
+
+
+
+
+<script src="fetch.js">
+//    document.getElementById('getJSON').addEventListener('click', getJSON);
+//    function getJSON() {
+//        var arr = [];
+//        var inputElems = document.getElementsByTagName("input"),
+//           // count = 0;
+//
+//        for (var i = 0; i < inputElems.length; i++) {
+//            if (inputElems[i].type == "checkbox" && inputElems[i].checked == true) {
+//                arr[i] = inputElems[i].value;
+//                //console.log(arr[i])
+//            }
+//
+//        }
+//
+//         var result = '<h2> News Headlines </h2>'
+//        for (var k = 0; k < arr.length; k++) {
+////            console.log(arr[k])
+//            var url=arr[k]
+//            //console.log('::URL::',url)
+//            if(url!=undefined){
+//                fetch(url)
+//                    .then((res) => res.json())
+//                    .then((data) => {
+//                result += data.articles[0].title;
+//                setData(result)
+//                // result += 'Hello';
+//            });
+//            }
+//        }
+//       function setData(res){
+//            document.getElementById('result').innerHTML = result;
+//        }
+//
+//    }
+
+</script>
+</body>
+</html>

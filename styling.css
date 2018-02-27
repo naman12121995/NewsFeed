@@ -1,4 +1,10 @@
 
+#getJSON{
+	position: relative;
+	width: 20%;
+	left: 40%;
+	top: .1px;
+}
 
 div {
     list-style-type: none;

@@ -34,7 +34,7 @@ function getJSON2(url2) {
 .then(data =>{
      document.getElementById('result2').innerHTML = 'Results Found::' + data.articles.length;
         for(i=0;i<data.articles.length;i++){
-            result += `<a href='${data.articles[i].url2}'target=_blank ><h1>${data.articles[i].title}</h1><img src=${data.articles[i].urlToImage} alt='image not found' width="150px" height="100px"/><p>${data.articles[i].description}</p> `;
+            result += `<a href='${data.articles[i].url}'target=_blank ><h1>${data.articles[i].title}</h1><img src=${data.articles[i].urlToImage} alt='image not found' width="150px" height="100px"/><p>${data.articles[i].description}</p> `;
         }
         setData(result)
 
